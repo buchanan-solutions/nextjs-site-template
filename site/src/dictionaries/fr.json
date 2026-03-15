@@ -1,0 +1,19 @@
+{
+  "site": {
+    "name": "Core MFG",
+    "tagline": {
+      "main": "L’intelligence Industrielle",
+      "accent": "Réinventée"
+    }
+  },
+  "button": {
+    "contact_us": "Contactez-nous",
+    "try_now": "Essayer",
+    "view_profile": "Voir le Profil Complet",
+    "read_article": "Lire l'Article"
+  },
+  "headings": {
+    "about": "À propos",
+    "accreditations": "Accréditations"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "site": {
+    "name": "CoreMfg",
+    "tagline": {
+      "main": "Manufacturing Intelligence",
+      "accent": "Redefined"
+    }
+  },
+  "button": {
+    "contact_us": "Contact Us",
+    "try_now": "Try Now",
+    "view_profile": "View Full Profile",
+    "read_article": "Read Article"
+  },
+  "headings": {
+    "about": "About",
+    "accreditations": "Accreditations"
+  }
+}
