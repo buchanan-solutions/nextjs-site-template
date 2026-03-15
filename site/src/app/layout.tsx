@@ -2,6 +2,7 @@
 
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
 import "@/styles/theme.css";
 import "@/styles/typography.css";
 
@@ -40,14 +41,21 @@ export default async function RootLayout({
   // className += " border-2 border-purple-500";
   // className += " p-2";
   className += " max-h-screen";
-  
+
   return (
-    <html lang="en" className="">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${fontFamily} ${className}`}
       >
         <AppProvider uiRuntimeConfig={uiRuntimeConfig}>
-          {children}
+          <NextThemesProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </NextThemesProvider>
         </AppProvider>
       </body>
     </html>
