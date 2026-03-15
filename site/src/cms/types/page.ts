@@ -29,7 +29,7 @@ export interface Page extends DocumentWithSlug {
   /**
    * The name of the single item to use for this page.
    */
-  single?: string;
+  single_id?: string;
 
   /**
    * Whether the page is a collection page.

@@ -1,4 +1,4 @@
-import type { TemplatePageProps } from "@/lib/cms/templates/template-page-props";
+import type { TemplatePageProps } from "@/cms/types/template-page-props";
 
 import type { Testimonial } from "./type";
 

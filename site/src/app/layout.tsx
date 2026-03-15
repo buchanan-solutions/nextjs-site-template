@@ -5,9 +5,11 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import "@/styles/theme.css";
 import "@/styles/typography.css";
+import "@/styles/structure.css";
 
-import { AppProvider } from "@/providers/app-setup-provider";
+import { AppProvider } from "@/providers/app-provider";
 import { getUiRuntimeConfig } from "@/lib/ui/utils/getUiRuntimeConfig";
+import { CMSProvider } from "@/providers/cms-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -54,7 +56,9 @@ export default async function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <CMSProvider>
+              {children}
+            </CMSProvider>
           </NextThemesProvider>
         </AppProvider>
       </body>

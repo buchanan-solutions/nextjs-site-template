@@ -7,11 +7,12 @@ import { loadDictionary } from "@/lib/cms/utils/load-dictionary";
 import DebuggableDiv from "@/components/debuggable/Div";
 import { getLocales } from "@/lib/cms/utils/get-locales";
 import { createStrapiClient } from "@/lib/cms/server/strapi-client";
-import DebuggableHeader from "@/components/debuggable/Header";
-import DebuggableFooter from "@/components/debuggable/Footer";
 import { getGlobal, getMenu } from "@/cms/services/singles";
 import Header from "@/templates/header";
 import Footer from "@/templates/footer";
+import { PageContextProvider } from "@/cms/page-context";
+import { getUiRuntimeConfig } from "@/lib/ui/utils/getUiRuntimeConfig";
+import AdminFloater from "@/cms/admin-floater";
 
 const log = loggerFactory.createLogger("localeLayout", { level: "debug" });
 
@@ -37,6 +38,7 @@ export default async function LocaleLayout({
 }) {
   // Language resolution is handled by the root layout and LanguageProvider
   const { locale } = await params;
+  const uiRuntimeConfig = await getUiRuntimeConfig();
 
   log.info("Rendering LangLayout for locale: ", locale);
 
@@ -78,15 +80,18 @@ export default async function LocaleLayout({
 
   return (
     <LocaleProvider initialLocale={locale} dictionary={dictionary}>
-      <DebuggableDiv
-        debug={debug}
-        id="locale-layout"
-        className={className}
-      >
-        <Header globalData={globalData} menuData={menuData} />
-        {children}
-        <Footer globalData={globalData} menuData={menuData} />
-      </DebuggableDiv>
+      <PageContextProvider>
+        <DebuggableDiv
+          debug={debug}
+          id="locale-layout"
+          className={className}
+        >
+          <Header globalData={globalData} menuData={menuData} />
+            {children}
+          <Footer globalData={globalData} menuData={menuData} />
+          {uiRuntimeConfig.nodeEnv === "development" && <AdminFloater />}
+        </DebuggableDiv>
+      </PageContextProvider>
     </LocaleProvider>
   );
 }
