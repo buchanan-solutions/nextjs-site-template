@@ -2,7 +2,8 @@
 
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "@/styles/theme.css";
+import "@/styles/typography.css";
 
 import { AppProvider } from "@/providers/app-setup-provider";
 import { getUiRuntimeConfig } from "@/lib/ui/utils/getUiRuntimeConfig";
@@ -16,6 +17,8 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+const fontFamily = `${geistSans.variable} ${geistMono.variable}`;
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -39,9 +42,9 @@ export default async function RootLayout({
   className += " max-h-screen";
   
   return (
-    <html lang="en">
+    <html lang="en" className="">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${className}`}
+        className={`${fontFamily} ${className}`}
       >
         <AppProvider uiRuntimeConfig={uiRuntimeConfig}>
           {children}

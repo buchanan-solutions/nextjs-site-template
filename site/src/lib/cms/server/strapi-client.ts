@@ -20,7 +20,7 @@ export function createStrapiClient(
   }
 
   const client = strapi({
-    baseURL: baseUrl,
+    baseURL: baseUrl + "/api",
     auth: auth,
   });
   return client;

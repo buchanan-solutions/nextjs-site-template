@@ -81,8 +81,6 @@ export async function fetchSingle<TData = unknown, TResult = TData>(
       });
 
     } catch (error) {
-      console.log("banana error", error);
-      console.log("banana error type", typeof error);
       if (error instanceof HTTPNotFoundError ) {
         log.info(`Single not found: ${resource}`, error.message);
         return { success: true, data: null };

@@ -1,0 +1,126 @@
+/* typography.css */
+@import "tailwindcss";
+
+@layer base {
+  /* Global reset for basic elements */
+  *, *::before, *::after {
+    /* border: 1px solid var(--border); */
+    /* outline: 2px solid var(--ring); */
+    /* outline-offset: 2px; */
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+  }
+
+  /* Headings */
+  h1 {
+    font-size: 2.25rem; /* 36px */
+    font-weight: 700;
+    line-height: 2.5rem;
+  }
+  h2 {
+    font-size: 1.875rem; /* 30px */
+    font-weight: 600;
+    line-height: 2.25rem;
+  }
+  h3 {
+    font-size: 1.5rem; /* 24px */
+    font-weight: 600;
+    line-height: 2rem;
+  }
+  h4 {
+    font-size: 1.25rem; /* 20px */
+    font-weight: 500;
+    line-height: 1.75rem;
+  }
+  h5 {
+    font-size: 1.125rem; /* 18px */
+    font-weight: 500;
+    line-height: 1.5rem;
+  }
+  h6 {
+    font-size: 1rem; /* 16px */
+    font-weight: 500;
+    line-height: 1.5rem;
+  }
+
+  /* Paragraphs */
+  p {
+    font-size: 1rem;
+    line-height: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Links */
+  a {
+    color: var(--primary);
+    text-decoration: underline;
+  }
+  a:hover {
+    color: rgba(var(--primary-rgb), 0.8); /* Optional: use RGB for hover opacity */
+  }
+
+  /* Lists */
+  ul, ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  ul {
+    list-style-type: disc;
+  }
+  ol {
+    list-style-type: decimal;
+  }
+  li {
+    margin-bottom: 0.25rem;
+  }
+
+  /* Blockquotes */
+  blockquote {
+    border-left: 4px solid var(--muted);
+    padding-left: 1rem;
+    font-style: italic;
+    color: var(--muted-foreground);
+    margin: 1rem 0;
+  }
+
+  /* Inline code */
+  code {
+    font-family: var(--font-mono);
+    background-color: rgba(var(--muted-rgb), 0.2);
+    padding: 0 0.25rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+  }
+
+  /* Dark mode adjustments */
+  .dark body {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+  /* .dark h1,
+  .dark h2,
+  .dark h3,
+  .dark h4,
+  .dark h5,
+  .dark h6,
+  .dark p,
+  .dark li {
+    color: var(--foreground);
+  } */
+  .dark a {
+    color: var(--primary);
+  }
+  .dark blockquote {
+    border-left-color: var(--muted);
+    color: var(--muted-foreground);
+  }
+  .dark code {
+    background-color: rgba(var(--muted-rgb), 0.2);
+  }
+}

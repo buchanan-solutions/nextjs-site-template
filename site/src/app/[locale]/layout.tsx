@@ -1,13 +1,7 @@
 // ./src/app/[locale]/layout.tsx
 
-// Standard
 import { ReactNode } from "react";
-
-
-// import { Locale } from "@/lib/locale/locale";
-// import { getLocaleAndDictionary } from "@/lib/locale/server-locale-utils";
 import { LocaleProvider } from "@/providers/locale-provider";
-
 import { loggerFactory } from "@/lib/logger/server/factory";
 import { loadDictionary } from "@/lib/cms/utils/load-dictionary";
 import DebuggableDiv from "@/components/debuggable/Div";
@@ -15,6 +9,9 @@ import { getLocales } from "@/lib/cms/utils/get-locales";
 import { createStrapiClient } from "@/lib/cms/server/strapi-client";
 import DebuggableHeader from "@/components/debuggable/Header";
 import DebuggableFooter from "@/components/debuggable/Footer";
+import { getGlobal, getMenu } from "@/cms/services/singles";
+import Header from "@/templates/header";
+import Footer from "@/templates/footer";
 
 const log = loggerFactory.createLogger("localeLayout", { level: "debug" });
 
@@ -43,8 +40,9 @@ export default async function LocaleLayout({
 
   log.info("Rendering LangLayout for locale: ", locale);
 
-  // const globalData = await getGlobal(locale);
-  // const menuItems = await getMenu(locale);
+  const client = createStrapiClient();
+  const globalData = await getGlobal(client, locale, log);
+  const menuData = await getMenu(client, locale, log);
   // const footerData = await getFooter(locale);
 
   // const environment =
@@ -85,21 +83,9 @@ export default async function LocaleLayout({
         id="locale-layout"
         className={className}
       >
-        <DebuggableHeader 
-          debug={debug}
-          id="site-header"
-          className="flex flex-col sticky top-0 z-50 bg-blue-500"
-        >
-          <h1>Locale Layout Header</h1>
-        </DebuggableHeader>
+        <Header globalData={globalData} menuData={menuData} />
         {children}
-        <DebuggableFooter
-          debug={debug}
-          id="site-footer"
-          className="flex flex-col"
-        >
-          <p>Locale Layout Footer</p>
-        </DebuggableFooter>
+        <Footer globalData={globalData} menuData={menuData} />
       </DebuggableDiv>
     </LocaleProvider>
   );

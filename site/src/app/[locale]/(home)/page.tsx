@@ -5,7 +5,7 @@ import { loggerFactory } from "@/lib/logger/server/factory";
 import HomePage from "@/templates/home-page";
 import { createStrapiClient } from "@/lib/cms/server/strapi-client";
 
-const log = loggerFactory.createLogger("homePage");
+const log = loggerFactory.createLogger("homePage", { level: "debug" });
 
 export default async function Page({ params }: {
   params: Promise<{ locale: string }>;
