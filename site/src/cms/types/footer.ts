@@ -1,5 +1,5 @@
 import type { MenuItem } from "@/cms/components/menu/menu-item";
-import type { Document } from "@/cms/types/document";
+import type { Document } from "@/lib/cms/types/document";
 
 export interface Footer extends Document {
   legalLinks: MenuItem[];

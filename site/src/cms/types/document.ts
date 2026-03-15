@@ -1,16 +1,11 @@
+import { Document as BaseDocument } from "@/lib/cms/types/document";
 import { Media } from "@/lib/cms/types/media";
-import type { API } from "@strapi/client";
 
-export interface Document extends API.Document {
-  id: number;
-  publishedAt?: string;
-  locale: string;
-  
-  // Custom fields for documents that need to be rendered as a specific template.
-  template?: string;
-}
+// export interface Document extends BaseDocument {
+//   template?: string;
+// }
 
-export interface DocumentWithSlug extends Document {
+export interface DocumentWithSlug extends BaseDocument {
   slug: string;
 }
 

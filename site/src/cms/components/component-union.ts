@@ -1,4 +1,4 @@
-// ./types/component-union.ts
+// ./cms/components/component-union.ts
 import { RichText } from "./shared/rich-text";
 import { Button } from "./buttons/button";
 

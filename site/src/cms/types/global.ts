@@ -1,4 +1,4 @@
-import type { Document } from "@/cms/types/document";
+import type { Document } from "@/lib/cms/types/document";
 import type { Media } from "@/lib/cms/types/media";
 
 export interface Global extends Document {

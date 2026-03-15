@@ -1,20 +1,15 @@
-import { Page } from "../../types/page";
+import { Page } from "@/cms/types/page";
+import { Component } from "@/lib/cms/types/component";
 
-export interface MenuItem {
-  id: string;
+export interface MenuItem extends Component {
   label: string;
   page?: Page;
-  external_url?: string;
-  submenu_items?: MenuSubItem[];
-  order?: number;
-  // hidden?: boolean;
+  href?: string;
+  submenu_items?: SubmenuItem[];
 }
 
-export interface MenuSubItem {
-  id: string;
+export interface SubmenuItem extends Component {
   label: string;
   page?: Page;
-  external_url?: string;
-  order?: number;
-  hidden?: boolean;
+  href?: string;
 }
