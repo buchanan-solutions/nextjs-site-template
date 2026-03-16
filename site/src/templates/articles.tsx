@@ -13,8 +13,7 @@ export default function ArticlesPage({ locale, globalData, page, collectionItems
 
   let className = "flex flex-col";
   className += " flex-1";
-  // className += " overflow-y-auto";
-  // className += " h-full";
+  className += " structure";
 
   const { debug, setDebug } = usePage();
 

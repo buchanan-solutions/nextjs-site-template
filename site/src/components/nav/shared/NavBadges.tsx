@@ -1,6 +1,7 @@
 // ./src/components/nav/shared/NavBadges.tsx
 "use client";
 
+import { useApp } from "@/providers/app-provider";
 import type { NavNode } from "../nav-model";
 
 export interface NavBadgesProps {
@@ -8,6 +9,9 @@ export interface NavBadgesProps {
 }
 
 export function NavBadges({ badges }: NavBadgesProps) {
+
+  const { nodeEnv } = useApp();
+
   if (!badges.comingSoon && !badges.noPage) return null;
 
   return (
@@ -17,7 +21,7 @@ export function NavBadges({ badges }: NavBadgesProps) {
           Coming Soon
         </span>
       )}
-      {badges.noPage && (
+      {badges.noPage && nodeEnv === "development" && (
         <span className="text-xs italic font-medium text-orange-500 bg-orange-500/20 px-2 py-1 rounded-md border border-orange-500/20">
           No Page
         </span>

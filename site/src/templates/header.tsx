@@ -12,11 +12,12 @@ import { HeaderNav } from "@/components/nav/header-nav";
 import { Content } from "@/components/content/Content";
 
 export interface HeaderProps {
+    locale: string;
     globalData: Global | null;
     menuData: Menu | null;
 }
 
-export default function Header({ globalData, menuData }: HeaderProps) {
+export default function Header({ locale, globalData, menuData }: HeaderProps) {
     const debugPrintMenuItems = () => {
         console.log(menuData?.items);
     }
@@ -36,7 +37,11 @@ export default function Header({ globalData, menuData }: HeaderProps) {
             <Content
                 className="flex flex-1 justify-between items-center"
                 defaults={{
-                    left: <h1 className="text-primary">{globalData?.siteName || "Site Name"}</h1>,
+                    left: (
+                        <Link href={`/${locale}`} className="no-underline">
+                            <h1 className="text-primary">{globalData?.siteName || "Site Name"}</h1>
+                        </Link>
+                    ),
                     center: <HeaderNav menu={menuData} />,
                     right: <ThemeToggle />,
                 }} 

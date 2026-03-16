@@ -7,7 +7,7 @@ import { loadDictionary } from "@/lib/cms/utils/load-dictionary";
 import DebuggableDiv from "@/components/debuggable/Div";
 import { getLocales } from "@/lib/cms/utils/get-locales";
 import { createStrapiClient } from "@/lib/cms/server/strapi-client";
-import { getGlobal, getMenu } from "@/cms/services/singles";
+import { getGlobal, getMenu, getFooter } from "@/cms/services/singles";
 import Header from "@/templates/header";
 import Footer from "@/templates/footer";
 import { PageContextProvider } from "@/cms/page-context";
@@ -45,7 +45,7 @@ export default async function LocaleLayout({
   const client = createStrapiClient();
   const globalData = await getGlobal(client, locale, log);
   const menuData = await getMenu(client, locale, log);
-  // const footerData = await getFooter(locale);
+  const footerData = await getFooter(client, locale, log);
 
   // const environment =
   //   (process.env.NEXT_PUBLIC_NODE_ENV as
@@ -86,9 +86,9 @@ export default async function LocaleLayout({
           id="locale-layout"
           className={className}
         >
-          <Header globalData={globalData} menuData={menuData} />
+          <Header locale={locale} globalData={globalData} menuData={menuData} />
             {children}
-          <Footer globalData={globalData} menuData={menuData} />
+          <Footer locale={locale} globalData={globalData} menuData={menuData} footerData={footerData} />
           {uiRuntimeConfig.nodeEnv === "development" && <AdminFloater />}
         </DebuggableDiv>
       </PageContextProvider>

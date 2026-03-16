@@ -25,6 +25,8 @@ export type ContentParts = {
   right?: SlotContent;
 };
 
+export type ContentVariant = "default" | "centered";
+
 /**
  * Generic Slot component that handles replace/prepend/append logic
  */
@@ -54,6 +56,13 @@ const defaultSlotClasses = {
   right: "flex items-center",
 } as const;
 
+const centeredSlotClasses = {
+  left: "flex items-center",
+  center:
+    "absolute left-1/2 -translate-x-1/2 flex items-center justify-center min-w-0",
+  right: "flex items-center ml-auto",
+} as const;
+
 export interface ContentProps {
   defaults: {
     left?: React.ReactNode;
@@ -71,6 +80,7 @@ export interface ContentProps {
     center?: string;
     right?: string;
   };
+  variant?: ContentVariant;
   debug?: boolean;
 }
 
@@ -79,19 +89,23 @@ export function Content({
   content,
   className,
   slotClasses,
+  variant = "default",
   debug,
 }: ContentProps) {
+  const slots =
+    variant === "centered" ? centeredSlotClasses : defaultSlotClasses;
+
   return (
     <DebuggableDiv
       debug={debug}
       id="content"
-      className={cn("flex items-center gap-2 min-w-0", className)}
+      className={cn("relative flex items-center gap-2 min-w-0", className)}
     >
       <DebuggableDiv
         debug={debug}
         id="content-left"
         className={cn(
-          defaultSlotClasses.left,
+          slots.left,
           slotClasses?.left,
           content?.left?.className,
         )}
@@ -102,7 +116,7 @@ export function Content({
         debug={debug}
         id="content-center"
         className={cn(
-          defaultSlotClasses.center,
+          slots.center,
           slotClasses?.center,
           content?.center?.className,
         )}
@@ -113,7 +127,7 @@ export function Content({
         debug={debug}
         id="content-right"
         className={cn(
-          defaultSlotClasses.right,
+          slots.right,
           slotClasses?.right,
           content?.right?.className,
         )}

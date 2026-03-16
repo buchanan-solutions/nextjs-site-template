@@ -43,14 +43,14 @@ function DesktopDropdownChild({
     <Link
       href={href}
       className={cn(
-        "flex items-center justify-between gap-2 px-3 py-2 text-sm rounded-md hover:bg-accent hover:text-accent-foreground transition-colors",
-        node.active ? "bg-accent text-primary" : ""
+        "flex items-center justify-between gap-2 px-3 py-2 text-sm rounded-md hover:bg-accent hover:text-accent-foreground transition-colors no-underline",
+        node.active ? "bg-accent text-primary-foreground" : ""
       )}
     >
       <NavLabel
         node={node}
         variant="desktop"
-        labelClassName={node.active ? "text-primary font-medium" : ""}
+        labelClassName={node.active ? "text-primary-foreground font-medium" : ""}
       />
     </Link>
   );
@@ -87,7 +87,7 @@ export function DesktopBranchItem({
         </div>
       </PopoverTrigger>
       <PopoverContent
-        className="w-56 p-2 z-[52]"
+        className="w-56 p-2 z-[52] border-none"
         align="start"
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}

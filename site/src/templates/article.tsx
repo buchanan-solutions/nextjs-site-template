@@ -12,6 +12,7 @@ export default function ArticlePage({ locale, globalData, page, collectionItem }
 
   let className = "flex flex-col";
   className += " flex-1";
+  className += " structure";
   // className += " overflow-y-auto";
   // className += " h-full";
 
@@ -25,10 +26,9 @@ export default function ArticlePage({ locale, globalData, page, collectionItem }
       <DebuggableDiv 
         debug={debug} 
         id="article-page-content" 
-        className={cn("flex flex-col", (false ? "h-full" : "h-[1800px]"))}
+        className={cn("flex flex-col")}
       >
-
-        <p>Locale: {locale}</p>
+        <h1>{collectionItem?.title}</h1>
         <p>Page Data: </p>
         <pre>
           <code>

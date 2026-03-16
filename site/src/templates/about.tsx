@@ -27,14 +27,7 @@ export default function AboutPage({ locale, globalData, page, singleItem }: Temp
         id="about-page-content" 
         className={cn("flex flex-col")}
       >
-
-        <p>Locale: {locale}</p>
-        <p>Global Data: </p>
-        <pre>
-          <code>
-            {globalData ? JSON.stringify(globalData, null, 2) : "No global data"}
-          </code>
-        </pre>
+        <h1>{page.title}</h1>
         <p>About Data: </p>
         <pre>
           <code>
