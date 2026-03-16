@@ -1,0 +1,52 @@
+{
+  "collectionName": "components_button_buttons",
+  "info": {
+    "displayName": "Button",
+    "icon": "code"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "variant": {
+      "type": "enumeration",
+      "default": "default",
+      "enum": [
+        "default",
+        "destructive",
+        "outline",
+        "secondary",
+        "ghost",
+        "link"
+      ]
+    },
+    "size": {
+      "type": "enumeration",
+      "default": "default",
+      "enum": [
+        "default",
+        "sm",
+        "lg",
+        "icon"
+      ]
+    },
+    "className": {
+      "type": "string"
+    },
+    "disabled": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "href": {
+      "type": "string"
+    },
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
+    }
+  },
+  "config": {}
+}

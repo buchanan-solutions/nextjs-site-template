@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_text_text_w_accents",
+  "info": {
+    "displayName": "Text w Accent",
+    "icon": "bold"
+  },
+  "options": {},
+  "attributes": {
+    "main": {
+      "type": "string"
+    },
+    "secondary": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

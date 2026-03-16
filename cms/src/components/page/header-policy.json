@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_page_header_policies",
+  "info": {
+    "displayName": "Header-Policy",
+    "icon": "code"
+  },
+  "options": {},
+  "attributes": {
+    "body": {
+      "type": "richtext"
+    }
+  },
+  "config": {}
+}

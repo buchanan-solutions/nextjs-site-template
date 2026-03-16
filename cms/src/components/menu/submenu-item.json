@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_menu_submenu_items",
+  "info": {
+    "displayName": "Submenu Item",
+    "icon": "stack"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
+    },
+    "href": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
