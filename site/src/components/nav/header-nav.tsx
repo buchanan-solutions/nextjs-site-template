@@ -328,7 +328,7 @@ export function HeaderNav({
                 key={item.id}
                 href={itemHref}
                 className={cn(
-                  "flex items-center gap-2 py-2 border-b-2 transition-colors duration-200",
+                  "flex items-center gap-2 py-2 text-red-500 border-b-2 transition-colors duration-200 text-decoration-none",
                   isActive
                     ? "border-primary"
                     : "border-transparent hover:border-primary",
